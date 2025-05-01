@@ -6,4 +6,10 @@ export default ({ env }) => ({
   },
   emitErrors: false,
   timeout: 30000,
+
+  logger: {
+    updates: {
+      enabled: false // Disables update notifications
+    }
+  }
 });
