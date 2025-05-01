@@ -6,4 +6,10 @@ exports.default = ({ env }) => ({
     app: {
         keys: env.array('APP_KEYS'),
     },
+
+    https: {
+        enabled: true,
+        key: env('SSL_KEY_PATH'),
+        cert: env('SSL_CERT_PATH'),
+      }, 
 });
