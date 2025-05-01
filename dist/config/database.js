@@ -6,7 +6,7 @@ module.exports = ({ env }) => ({
         },
         debug: true,
         pool: { min: 0, max: 7 },
-    }
+    },
 
     logger: {
         updates: {
