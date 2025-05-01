@@ -4,12 +4,11 @@ exports.default = ({ env }) => ({
     host: env('HOST', '0.0.0.0'),
     port: env.int('PORT', 1337),
     app: {
-        keys: env.array('APP_KEYS'),
+        keys: env.array('APP_KEYS', [
+            'myKeyA', // Replace with secure keys
+            'myKeyB', // Or use environment variables
+        ]),
     },
-
-    https: {
-        enabled: true,
-        key: env('SSL_KEY_PATH'),
-        cert: env('SSL_CERT_PATH'),
-      }, 
+    emitErrors: false,
+    timeout: 30000, // 30 seconds
 });
