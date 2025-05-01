@@ -4,18 +4,15 @@ exports.default = ({ env }) => ({
     connection: {
         client: 'postgres',
         connection: {
-            // Primary connection method - use DATABASE_URL
             connectionString: env('DATABASE_URL'),
-            // Fallback to individual variables if DATABASE_URL not available
-            host: env('PGHOST'),
-            port: env.int('PGPORT'),
-            database: env('DATABASE_CLIENT'),
-            user: env('PGUSER'),
-            password: env('PGPASSWORD'),
-            // Required SSL settings for Railway
-            ssl: {
-                rejectUnauthorized: false // Railway uses self-signed certificates
-            }
+            host: env('PGHOST', 'localhost'),
+            port: env.int('PGPORT', 5432),
+            database: env('PGDATABASE', 'railway'),
+            user: env('PGUSER', 'postgres'),
+            password: env('PGPASSWORD', ''),
+            ssl: env.bool('DATABASE_SSL', false) ? {
+                rejectUnauthorized: false
+            } : false,
         },
         pool: {
             min: 2,
